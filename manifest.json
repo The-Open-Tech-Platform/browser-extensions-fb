@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "TOTP: Focus Blocker",
+  "version": "1.0.0",
+  "description": "Блокирует отслеживание сайтами переключения вкладок и потери фокуса окна браузера. Разблокирует копирование текста даже на сайтах, где это запрещено.",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "src/settings-bridge.js",
+        "src/content.js",
+        "src/copy-helper.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "public/popup.html",
+    "default_icon": {
+      "16": "assets/icon.jpg",
+      "32": "assets/icon.jpg",
+      "48": "assets/icon.jpg",
+      "128": "assets/icon.jpg"
+    }
+  },
+  "options_page": "public/options.html",
+  "icons": {
+    "16": "assets/icon.jpg",
+    "32": "assets/icon.jpg",
+    "48": "assets/icon.jpg",
+    "128": "assets/icon.jpg"
+  }
+}
+
